@@ -1,5 +1,5 @@
 // Export Calculator class as main entry point
-export { Calculator } from './calculator.js';
+export { Calculator } from './calculator';
 
 // Math utilities (legacy functions - kept for backwards compatibility)
 export function add(a: number, b: number): number {
@@ -11,6 +11,8 @@ export function subtract(a: number, b: number): number {
 }
 
 export function multiply(a: number, b: number): number {
+  // Legacy function maintains simpler behavior for backwards compatibility
+  // Unlike Calculator class multiply method, this doesn't include input validation
   return a * b;
 }
 

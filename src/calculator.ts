@@ -45,8 +45,19 @@ export class Calculator {
    * @param a First number
    * @param b Second number
    * @returns The product of a and b
+   * @throws {Error} if either parameter is not a number or is NaN
    */
   multiply(a: number, b: number): number {
+    // Input validation to ensure both parameters are numbers
+    if (typeof a !== 'number' || typeof b !== 'number') {
+      throw new Error('Both parameters must be numbers');
+    }
+
+    // Additional validation for NaN values
+    if (isNaN(a) || isNaN(b)) {
+      throw new Error('Parameters cannot be NaN');
+    }
+
     const result = a * b;
     this.addToHistory('multiply', [a, b], result);
     return result;
