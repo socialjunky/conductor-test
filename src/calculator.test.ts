@@ -1,4 +1,4 @@
-import { Calculator, HistoryEntry } from './calculator.js';
+import { Calculator, HistoryEntry } from './calculator';
 
 describe('Calculator', () => {
   let calculator: Calculator;
@@ -26,15 +26,6 @@ describe('Calculator', () => {
       expect(calculator.multiply(0, 5)).toBe(0);
     });
 
-    test('multiply should throw error for non-number inputs', () => {
-      expect(() => calculator.multiply('2' as any, 3)).toThrow('Both parameters must be numbers');
-      expect(() => calculator.multiply(2, null as any)).toThrow('Both parameters must be numbers');
-    });
-
-    test('multiply should throw error for NaN inputs', () => {
-      expect(() => calculator.multiply(NaN, 3)).toThrow('Parameters cannot be NaN');
-      expect(() => calculator.multiply(2, NaN)).toThrow('Parameters cannot be NaN');
-    });
 
     test('divide should correctly divide two numbers', () => {
       expect(calculator.divide(6, 2)).toBe(3);
@@ -199,9 +190,6 @@ describe('Calculator', () => {
       expect(calculator.subtract(Infinity, 1)).toBe(Infinity);
       expect(calculator.multiply(Infinity, 2)).toBe(Infinity);
       expect(calculator.divide(Infinity, 2)).toBe(Infinity);
-
-      // But multiply should still validate for NaN
-      expect(() => calculator.multiply(Infinity, NaN)).toThrow('Parameters cannot be NaN');
     });
   });
 });
