@@ -79,9 +79,9 @@ export class Calculator {
 
     this.operationHistory.push(operationRecord);
 
-    // Only slice when we exceed the max size to improve performance
+    // Use slice for better performance when history exceeds max size
     if (this.operationHistory.length > this.maxHistorySize) {
-      this.operationHistory.shift(); // Remove the oldest operation
+      this.operationHistory = this.operationHistory.slice(-this.maxHistorySize);
     }
   }
 }
