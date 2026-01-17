@@ -1,4 +1,7 @@
-// Math utilities
+// Export Calculator class as main entry point
+export { Calculator } from './Calculator.js';
+
+// Math utilities (legacy functions - kept for backwards compatibility)
 export function add(a: number, b: number): number {
   return a + b;
 }
