@@ -29,3 +29,15 @@ export function divide(dividend: number, divisor: number): number | null {
 
   return dividend / divisor;
 }
+
+// User types and interfaces
+export type {
+  User,
+  CreateUserData,
+  UpdateUserData,
+  UserQuery,
+  UserOperationResult
+} from './types/user.js';
+
+// User store
+export { UserStore } from './stores/UserStore.js';
