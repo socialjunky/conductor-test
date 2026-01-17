@@ -1,4 +1,4 @@
-import { add, subtract, multiply, divide } from './index.js';
+import { add, subtract, multiply, divide } from './math';
 
 describe('Math utilities', () => {
   describe('add', () => {

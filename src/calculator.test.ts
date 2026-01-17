@@ -1,4 +1,4 @@
-import { Calculator, CalculatorOperation } from './index.js';
+import { Calculator, CalculatorOperation } from './index';
 
 describe('Calculator', () => {
   let calculator: Calculator;

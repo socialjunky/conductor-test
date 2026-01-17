@@ -1,64 +1,7 @@
-// Math utilities
-export function add(a: number, b: number): number {
-  // Input validation to ensure both parameters are numbers
-  if (typeof a !== 'number' || typeof b !== 'number') {
-    throw new Error('Both parameters must be numbers');
-  }
-
-  // Additional validation for NaN values
-  if (isNaN(a) || isNaN(b)) {
-    throw new Error('Parameters cannot be NaN');
-  }
-
-  return a + b;
-}
-
-export function subtract(a: number, b: number): number {
-  // Input validation to ensure both parameters are numbers
-  if (typeof a !== 'number' || typeof b !== 'number') {
-    throw new Error('Both parameters must be numbers');
-  }
-
-  // Additional validation for NaN values
-  if (isNaN(a) || isNaN(b)) {
-    throw new Error('Parameters cannot be NaN');
-  }
-
-  return a - b;
-}
-
-export function multiply(a: number, b: number): number {
-  // Input validation to ensure both parameters are numbers
-  if (typeof a !== 'number' || typeof b !== 'number') {
-    throw new Error('Both parameters must be numbers');
-  }
-
-  // Additional validation for NaN values
-  if (isNaN(a) || isNaN(b)) {
-    throw new Error('Parameters cannot be NaN');
-  }
-
-  return a * b;
-}
-
-export function divide(dividend: number, divisor: number): number {
-  // Input validation to ensure both parameters are numbers
-  if (typeof dividend !== 'number' || typeof divisor !== 'number') {
-    throw new Error('Both parameters must be numbers');
-  }
-
-  // Additional validation for NaN values
-  if (isNaN(dividend) || isNaN(divisor)) {
-    throw new Error('Parameters cannot be NaN');
-  }
-
-  // Handle division by zero
-  if (divisor === 0) {
-    throw new Error('Division by zero is not allowed');
-  }
-
-  return dividend / divisor;
-}
+// Re-export math utilities from utils module
+export { add, subtract, multiply, divide } from './utils/math';
+// Import functions for internal use in Calculator class
+import { add, subtract, multiply, divide } from './utils/math';
 
 // Types for calculator operations
 export interface CalculatorOperation {
@@ -136,9 +79,9 @@ export class Calculator {
 
     this.operationHistory.push(operationRecord);
 
-    // Keep only the last 10 operations
+    // Only slice when we exceed the max size to improve performance
     if (this.operationHistory.length > this.maxHistorySize) {
-      this.operationHistory = this.operationHistory.slice(-this.maxHistorySize);
+      this.operationHistory.shift(); // Remove the oldest operation
     }
   }
 }
